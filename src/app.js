@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 //Variaveis
-const port  = 3000;
+const port  = process.env.PORT || 3000;
 
 //Inicia conexão com o BD
 mongoose.connect(process.env.MONGO_URI, {
