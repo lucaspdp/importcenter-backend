@@ -11,6 +11,7 @@ const router = express.Router();
 ///ADMIN
 router.post('/register', User.store);
 router.get('/users', User.index);
+router.put('/user/:user_id', User.update);
 router.get('/posts', Post.show);
 //POST
 router.post('/post/new', Post.store);

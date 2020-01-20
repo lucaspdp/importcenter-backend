@@ -52,4 +52,24 @@ export default {
       return res.status(401).json({error: "Não autorizado"})
     }
   },
+
+  async update(req, res){
+    const { name, email, code } = req.body;
+    const { id } = req.headers;
+    const { user_id } = req.params;
+    const isAdmin = await User.findById(id);
+
+    if(isAdmin && isAdmin.admin){
+      const user = await User.findByIdAndUpdate(user_id, {
+        email,
+        name,
+        code
+      });
+      if(!user){
+        return res.status(400).json({error: 'Usuário não encontrado!'});
+      }
+
+      return res.json(user);
+    }
+  }
 }
