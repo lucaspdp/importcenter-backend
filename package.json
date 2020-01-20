@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start": "sucrase-node src/app.js"
   },
   "dependencies": {
     "axios": "^0.19.1",
