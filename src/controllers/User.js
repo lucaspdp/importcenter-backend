@@ -54,7 +54,7 @@ export default {
   },
 
   async update(req, res){
-    const { name, email, code } = req.body;
+    const { name, email, code, admin } = req.body;
     const { id } = req.headers;
     const { user_id } = req.params;
     const isAdmin = await User.findById(id);
@@ -63,7 +63,8 @@ export default {
       const user = await User.findByIdAndUpdate(user_id, {
         email,
         name,
-        code
+        code,
+        admin
       });
       if(!user){
         return res.status(400).json({error: 'Usuário não encontrado!'});
@@ -71,5 +72,13 @@ export default {
 
       return res.json(user);
     }
+  },
+  async show(req, res){
+    const { id } = req.params;
+    const user = await User.findById(id);
+    if(!user) return res.status(400).json({error: 'Usuário não encontrado!'});
+
+    return res.json(user);
   }
 }
+
