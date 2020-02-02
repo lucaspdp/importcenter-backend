@@ -4,7 +4,7 @@ import Post from "../models/Post";
 
 export default {
   async update(req, res){
-    const { credit, value, user_email } = req.body;
+    const { credit, value, user_email, t_type } = req.body;
     const { id, post_id, admin_id } = req.headers;
 
     if(!id && !user_email) return res.status(401).json({ error: "Todos os dados devem ser preenchidos!" });
@@ -59,7 +59,8 @@ export default {
         }
         user.credits += value;
         user.statement.push({
-          name: value>0 ? "Compra de créditos" : "Débito de créditos",
+          //name: value>0 ? "Compra de créditos" : "Débito de créditos",
+          name: t_type,
           price: value,
           date: Date.now()
         })

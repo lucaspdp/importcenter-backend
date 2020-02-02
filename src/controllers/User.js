@@ -79,6 +79,22 @@ export default {
     if(!user) return res.status(400).json({error: 'Usuário não encontrado!'});
 
     return res.json(user);
+  },
+
+  async delete(req, res){
+    const { id } = req.headers
+    const { user_id } = req.params;
+    
+    const isAdmin = await User.findById(id);
+
+    if(isAdmin && isAdmin.admin){
+      const response = await User.findByIdAndRemove(user_id);
+      if(!response)
+        return res.status(400).json({error: 'Usuário não encontrado!'});
+      return res.json({ok: true});
+    }else{
+      return res.status(401).json({error: "Não autorizado"})
+    }
   }
 }
 
