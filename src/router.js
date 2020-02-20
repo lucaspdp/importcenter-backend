@@ -12,8 +12,10 @@ const router = express.Router();
 router.post('/register', User.store);
 router.get('/users', User.index);
 router.get('/user/:id', User.show);
+router.get('/editpost/:postId', Post.showOne);
 router.delete('/user/:user_id', User.delete);
 router.put('/user/:user_id', User.update);
+router.put('/post/:postId', Post.update);
 router.get('/posts', Post.show);
 //POST
 router.post('/post/new', Post.store);
