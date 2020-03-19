@@ -1,5 +1,6 @@
 import User from "../models/User";
 import Post from "../models/Post";
+import Credits from '../models/Credits';
 
 
 export default {
@@ -65,6 +66,10 @@ export default {
           date: Date.now()
         })
 
+        await Credits.create({
+          destination: user._id,
+          value
+        })
         await user.save();
         return res.json(user.credits);
       }else{

@@ -5,6 +5,7 @@ import Authentication from './controllers/Authentication';
 import Post from './controllers/Post';
 import Credits from './controllers/Credits';
 import Statement from './controllers/Statement';
+import AdminCredits from './controllers/AdminCredits';
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.delete('/user/:user_id', User.delete);
 router.put('/user/:user_id', User.update);
 router.put('/post/:postId', Post.update);
 router.get('/posts', Post.show);
+router.get('/creditshistory', AdminCredits.index);
 //POST
 router.post('/post/new', Post.store);
 router.delete('/post/delete', Post.delete);
