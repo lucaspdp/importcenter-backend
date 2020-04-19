@@ -1,4 +1,5 @@
 import User from '../models/User';
+import Email from '../services/email';
 
 export default {
 
@@ -29,7 +30,12 @@ export default {
         credits,
         code
       })
-  
+
+      Email.sendEmail({
+        email,
+        name,
+        code
+      }, "register");
       return res.json({
         user
       });

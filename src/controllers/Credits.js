@@ -1,6 +1,7 @@
 import User from "../models/User";
 import Post from "../models/Post";
 import Credits from '../models/Credits';
+import Email from '../services/email';
 
 
 export default {
@@ -60,7 +61,6 @@ export default {
         }
         user.credits += value;
         user.statement.push({
-          //name: value>0 ? "Compra de créditos" : "Débito de créditos",
           name: t_type,
           price: value,
           date: Date.now()
@@ -70,6 +70,14 @@ export default {
           destination: user._id,
           value
         })
+
+        Email.sendEmail({
+          email: user.email,
+          name: user.name,
+          value,
+          creditsNow: user.credits
+        }, "credits");
+
         await user.save();
         return res.json(user.credits);
       }else{

@@ -1,6 +1,6 @@
 import Post from '../models/Post';
 import User from '../models/User';
-import { response } from 'express';
+import Email from '../services/email';
 
 export default {
   async store(req, res){
@@ -29,6 +29,14 @@ export default {
         destination: destination_user._id
       })
 
+      Email.sendEmail({
+        email: destination_user.email,
+        name: destination_user.name,
+        post:{
+          vehicle,
+          brand
+        }
+      }, "post");
       return res.json({post})
     }else{
       return res.status(401).json({error: "Não autorizado"})
