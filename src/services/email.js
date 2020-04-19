@@ -182,7 +182,7 @@ export default {
       <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 15px; padding-left: 15px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
       <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.8;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;">
       <div style="font-size: 14px; line-height: 1.8; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; color: #555555; mso-line-height-alt: 25px;">
-      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 18px;">Olá ${to.name}! Bem vindo ao nossos sistema de clientes!</span></p>
+      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 18px;">Olá ${to.name}! Bem-vindo(a) a nossa plataforma On-line!</span></p>
       </div>
       </div>
       <!--[if mso]></td></tr></table><![endif]-->
@@ -224,7 +224,7 @@ export default {
       <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
       <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
       <div style="font-size: 14px; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; color: #555555; mso-line-height-alt: 17px;">
-      <p style="font-size: 18px; line-height: 1.2; font-family: inherit; word-break: break-word; mso-line-height-alt: 22px; margin: 0;"><span style="font-size: 18px;"><strong>Código de Login:</strong></span></p>
+      <p style="font-size: 18px; line-height: 1.2; font-family: inherit; word-break: break-word; mso-line-height-alt: 22px; margin: 0;"><span style="font-size: 18px;"><strong>Código de Acesso:</strong></span></p>
       </div>
       </div>
       <!--[if mso]></td></tr></table><![endif]-->
@@ -476,7 +476,7 @@ export default {
       <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 15px; padding-left: 15px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
       <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.8;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;">
       <div style="font-size: 14px; line-height: 1.8; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; color: #555555; mso-line-height-alt: 25px;">
-      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 18px;">Olá ${to.name}! Um novo arquivo foi registrado em sua conta</span></p>
+      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 16px;">Olá ${to.name}! Um novo arquivo foi registrado em sua conta</span></p>
       </div>
       </div>
       <!--[if mso]></td></tr></table><![endif]-->
@@ -816,7 +816,7 @@ export default {
       <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 15px; padding-left: 15px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
       <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.8;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;">
       <div style="font-size: 14px; line-height: 1.8; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; color: #555555; mso-line-height-alt: 25px;">
-      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 18px;">Olá ${to.name}! Boas notícias! Créditos foram adicionados em sua conta!</span></p>
+      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 18px;">Olá ${to.name}! Créditos foram adicionados em sua conta!</span></p>
       </div>
       </div>
       <!--[if mso]></td></tr></table><![endif]-->
