@@ -115,6 +115,14 @@ export default {
         url,
         destination: destination_user._id
       })
+      Email.sendEmail({
+        email: destination_user.email,
+        name: destination_user.name,
+        post:{
+          vehicle,
+          brand
+        }
+      }, "updatePost");
       return res.status(200).json(post)
     }
     return res.json({error: "Sem autorização!"});
