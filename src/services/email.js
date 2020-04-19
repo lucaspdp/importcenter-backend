@@ -476,7 +476,7 @@ export default {
       <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 15px; padding-left: 15px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
       <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.8;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;">
       <div style="font-size: 14px; line-height: 1.8; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; color: #555555; mso-line-height-alt: 25px;">
-      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 16px;">Olá ${to.name}! Seu arquivo está pronto!</span></p>
+      <p style="font-size: 18px; line-height: 1.8; text-align: center; font-family: inherit; word-break: break-word; mso-line-height-alt: 32px; margin: 0;"><span style="font-size: 16px;">Olá ${to.name}! Novo arquivo registrado no sistema!</span></p>
       </div>
       </div>
       <!--[if mso]></td></tr></table><![endif]-->
