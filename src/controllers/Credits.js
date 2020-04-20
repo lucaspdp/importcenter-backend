@@ -60,15 +60,17 @@ export default {
           return res.status(400).json({error: "Usuário não encontrado!"});
         }
         user.credits += value;
+        const date = Date.now();
         user.statement.push({
           name: t_type,
           price: value,
-          date: Date.now()
+          date
         })
 
         await Credits.create({
           destination: user._id,
-          value
+          value,
+          date
         })
 
         Email.sendEmail({

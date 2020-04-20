@@ -19,6 +19,7 @@ router.put('/user/:user_id', User.update);
 router.put('/post/:postId', Post.update);
 router.get('/posts', Post.show);
 router.get('/creditshistory', AdminCredits.index);
+router.delete('/creditshistory/:date', AdminCredits.delete);
 //POST
 router.post('/post/new', Post.store);
 router.delete('/post/delete', Post.delete);

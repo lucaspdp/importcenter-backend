@@ -9,6 +9,10 @@ const CreditsSchema = new Schema({
   value: {
     type: String,
     required: true
+  },
+  date: {
+    type: String,
+    required: true
   }
 },{
   timestamps: true
