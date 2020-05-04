@@ -66,12 +66,14 @@ export default {
           price: value,
           date
         })
-
-        await Credits.create({
-          destination: user._id,
-          value,
-          date
-        })
+        
+        if(value > 0){
+          await Credits.create({
+            destination: user._id,
+            value,
+            date
+          })
+        }
 
         Email.sendEmail({
           email: user.email,
