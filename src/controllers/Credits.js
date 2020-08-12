@@ -67,13 +67,21 @@ export default {
           date
         })
         
-        if(value > 0){
+        /*if(value > 0){
           await Credits.create({
             destination: user._id,
             value,
             date
           })
-        }
+        }*/
+        
+        //Cria um histórico de crédito mesmo se for valor negativo
+        
+        await Credits.create({
+          destination: user._id,
+          value,
+          date
+        })
 
         Email.sendEmail({
           email: user.email,
