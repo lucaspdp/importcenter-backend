@@ -27,6 +27,7 @@ router.delete('/post/delete', Post.delete);
 ///USER
 router.post('/login', Authentication.store);
 router.get('/post/show', Post.index);
+router.get('/post/count', Post.count);
 router.get('/credits', Credits.index);
 router.put('/credits', Credits.update);
 router.get('/statement', Statement.index);

@@ -8,6 +8,7 @@ export default {
     const { id } = req.headers
     
     const isAdmin = await User.findById(id);
+    // const isAdmin = {admin: true}
 
     if(isAdmin && isAdmin.admin){
       const checkUser = await User.findOne({
@@ -46,14 +47,34 @@ export default {
   },
 
   async index(req, res){
-    const { id } = req.headers
+    const { id, rows, is_web, page} = req.headers
+    const {email, code} = req.query;
     
     const isAdmin = await User.findById(id);
+    let users = []
 
     if(isAdmin && isAdmin.admin){
-      const users = await User.find({});
+      if(is_web){
+          users = await User.find({
+            ...email && {email: {$regex: '.*' + email + '.*'}},
+            ...code && {code: {$regex: '.*' + code + '.*'}}
+          }).sort({
+          createdAt: 'desc'
+        }).limit(rows).skip(rows * page);
+      }
 
-      return res.json(users);
+      else{
+        users = await User.find({
+          ...email && {email: {$regex: '.*' + email + '.*'}},
+          ...code && {code: {$regex: '.*' + code + '.*'}}
+        }).sort({
+          createdAt: 'desc'
+        });
+      }
+    
+      const count = await User.find({}).count()
+
+      return res.json({users, count});
     }else{
       return res.status(401).json({error: "Não autorizado"})
     }

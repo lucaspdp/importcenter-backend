@@ -4,7 +4,8 @@ const CreditsSchema = new Schema({
   destination:{
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
+    
   },
   value: {
     type: String,
@@ -15,7 +16,10 @@ const CreditsSchema = new Schema({
     required: true
   }
 },{
-  timestamps: true
+  timestamps: true,
+  toJSON:{
+    virtuals: true
+  }
 });
 
 export default model("Credits", CreditsSchema);

@@ -3,7 +3,8 @@ import User from '../models/User';
 
 export default {
   async index(req, res){
-    const {id} = req.headers;
+    const { id, rows, is_web, page} = req.headers
+    const {email, code} = req.query;
 
     const user = await User.findById(id);
     if(!user){
@@ -14,9 +15,38 @@ export default {
       return res.status(500).json({error: "Você não tem permissão para executar esse comando!"});
     }
 
-    const response = await Credits.find({}).populate('destination');
+    let users_id = []
+    let filtered = undefined
+    let creditsHistory = [];
+    let count = 0;
+
+    if(email || code){
+      const users = await User.find({
+        ...email && {email: {$regex: '.*' + email + '.*'}},
+        ...code && {code: {$regex: '.*' + code + '.*'}}
+      }).select('_id')
+
+      filtered = true
+
+      users_id = Object.values(users).map(val=> val._id)
+    }
+
+    creditsHistory = await Credits.find({
+      ...filtered && {destination:{
+        $in: users_id
+      }}
+    }).sort({
+      createdAt: 'desc'
+    }).limit(rows).skip(rows * page).populate({path: 'destination', select: 'email code name credits'})
+
+    count = await Credits.find({
+      ...filtered && {destination:{
+        $in: users_id
+      }}
+    }).populate({path: 'destination', select: 'email code name credits'}).count()
+
+    return res.json({credits: creditsHistory, count})
     
-    return res.json(response);
   },
 
   async delete(req, res){

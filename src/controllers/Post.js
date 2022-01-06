@@ -2,6 +2,8 @@ import Post from '../models/Post';
 import User from '../models/User';
 import Email from '../services/email';
 
+const itemsPerPage = 10;
+
 export default {
   async store(req, res){
     const { vehicle, brand, price, url, destination_email } = req.body;
@@ -44,13 +46,33 @@ export default {
   },
 
   async index(req, res){
-    const { id } = req.headers;
+    const { id, page: _page, is_web } = req.headers;
     const user = await User.findById(id);
+    const page = _page - 1;
+    let posts = []
+    
     if(!user) return res.status(400).json({error: "Usuário não encontrado"});
-    const posts = await Post.find({
-      destination: id
-    });
+
+    if(is_web)
+      posts = await Post.find({
+        destination: id
+      }).sort({updatedAt: 'desc'}).limit(itemsPerPage).skip(page * itemsPerPage);
+    
+    else
+      posts = await Post.find({
+        destination: id
+      }).sort({updatedAt: 'desc'})
     return res.json(posts)
+  },
+
+  async count(req, res){
+    const { id, page: _page } = req.headers;
+
+    const count = await Post.find({destination: id}).count();
+
+    let maxPages = parseInt(count / itemsPerPage)
+    if(parseInt(count / itemsPerPage) != (count / itemsPerPage)) maxPages++;
+    return res.json({count, itemsPerPage, maxPages});
   },
 
   async delete(req, res){
@@ -69,15 +91,48 @@ export default {
   },
 
   async show(req, res){
-    const { id } = req.headers;
+    const { id, rows, is_web, page} = req.headers
+    const {email, code, placa} = req.query;
 
     const user = await User.findById(id);
 
     if(user.admin){
-      const posts = await Post.find().populate('destination');
-      return res.json(posts);
+
+      let users_id = []
+      let filtered = undefined
+      let posts = [];
+      let count = 0;
+
+      if(email || code){
+        const users = await User.find({
+          ...email && {email: {$regex: '.*' + email + '.*'}},
+          ...code && {code: {$regex: '.*' + code + '.*'}}
+        }).select('_id')
+  
+        filtered = true
+  
+        users_id = Object.values(users).map(val=> val._id)
+      }
+
+      posts = await Post.find({
+        ...filtered && {destination:{
+          $in: users_id
+        }},
+        ...placa && {brand: {$regex: '.*' + placa + '.*'}}
+      }).sort({
+        createdAt: 'desc'
+      }).limit(rows).skip(rows * page).populate({path: 'destination', select: 'email code name credits'})
+  
+      count = await Post.find({
+        ...filtered && {destination:{
+          $in: users_id
+        }},
+        ...placa && {brand: {$regex: '.*' + placa + '.*'}}
+      }).populate({path: 'destination', select: 'email code name credits'}).count()
+  
+      return res.json({posts, count});
     }
-    return res.json({error: "Sem autorização!"});
+    return res.status(500).json({error: "Sem autorização!"});
   },
 
   async showOne(req, res){

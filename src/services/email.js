@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 /*var transport = nodemailer.createTransport({
   host: "smtp.mailtrap.io",
@@ -13,8 +16,8 @@ var transport = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   auth: {
-    user: "noreply.importcenter@gmail.com",
-    pass: "@importcenter3"
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
   }
 });
 
@@ -1337,12 +1340,12 @@ export default {
       };
     }
 
-    await transport.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        //console.log('Email enviado: ' + info.response);
-      }
-    });
+    // await transport.sendMail(mailOptions, function(error, info){
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     //console.log('Email enviado: ' + info.response);
+    //   }
+    // });
   }
 }
