@@ -1340,12 +1340,12 @@ export default {
       };
     }
 
-    // await transport.sendMail(mailOptions, function(error, info){
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //     //console.log('Email enviado: ' + info.response);
-    //   }
-    // });
+    await transport.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        //console.log('Email enviado: ' + info.response);
+      }
+    });
   }
 }
