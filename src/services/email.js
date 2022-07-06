@@ -313,7 +313,7 @@ export default {
       </html>
       `;
       var mailOptions = {
-        from: '"IMPORT CENTER" no-reply@importcenter.net',
+        from: '"IMPORT CENTER" naoresponda.importcenter@outlook.com',
         to: to.email,
         subject: 'ImportCenter - Bem vindo à nossa plataforma!',
         html: welcomeHTML
@@ -653,7 +653,7 @@ export default {
       </html>
       `;
       var mailOptions = {
-        from: '[IMPORT CENTER] no-reply@importcenter.net',
+        from: '[IMPORT CENTER] naoresponda.importcenter@outlook.com',
         to: to.email,
         subject: 'ImportCenter - Seu arquivo está pronto!',
         html: newPostHTML
@@ -993,7 +993,7 @@ export default {
       </html>
       `;
       var mailOptions = {
-        from: '[IMPORT CENTER] no-reply@importcenter.net',
+        from: '[IMPORT CENTER] naoresponda.importcenter@outlook.com',
         to: to.email,
         subject: 'ImportCenter - Créditos adicionado em sua conta!',
         html: creditsHTML
