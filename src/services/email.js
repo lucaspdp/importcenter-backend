@@ -13,8 +13,9 @@ dotenv.config()
 });*/
 
 var transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
+  host: "smtp-mail.outlook.com",
+  port: 587,
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASSWORD
