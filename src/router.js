@@ -34,7 +34,7 @@ router.get('/statement', Statement.index);
 
 ///TEST
 router.get('/', (req, res)=>{
-  res.send(`Servidor ONLINE!`);
+  res.send(`Servidor ONLINE.`);
 });
 
 export default router;
