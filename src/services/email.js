@@ -1334,7 +1334,7 @@ export default {
       </html>
       `;
       var mailOptions = {
-        from: '[IMPORT CENTER] no-reply@importcenter.net',
+        from: '[IMPORT CENTER] naoresponda.importcenter@outlook.com',
         to: to.email,
         subject: 'ImportCenter - Seu arquivo foi atualizado!',
         html: newPostHTML
