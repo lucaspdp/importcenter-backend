@@ -9,7 +9,11 @@ export default {
 
     const statements = user.statement.sort(function(a,b) {
       return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
-  });
+    });
+
+    if(statements.length > 50){
+      statements.length = 50
+    }
 
     return res.json(statements);
   }

@@ -49,6 +49,23 @@ export default {
     
   },
 
+  async indexAll(req, res){
+    const { id } = req.headers
+
+    const user = await User.findById(id);
+    if(!user){
+      res.status(400).json({error: "Usuário não encontrado"});
+      return;
+    }
+    if(!user.admin){
+      return res.status(500).json({error: "Você não tem permissão para executar esse comando!"});
+    }
+
+    const creditsHistory = await Credits.find().populate({path: 'destination', select: 'email code name credits'})
+
+    return res.json(creditsHistory)
+  },
+
   async delete(req, res){
     const {id} = req.headers;
     const {date} = req.params;

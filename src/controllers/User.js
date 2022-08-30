@@ -80,6 +80,31 @@ export default {
     }
   },
 
+  async indexAll(req, res){
+    const { id } = req.headers
+    
+    const isAdmin = await User.findById(id);
+    let users = []
+
+    if(isAdmin && isAdmin.admin){
+        users = await User.find().sort({
+          createdAt: 'desc'
+        });
+
+      return res.json(users);
+    }else{
+      return res.status(401).json({error: "Não autorizado"})
+    }
+  },
+  async showCode(req, res){
+    
+    const { code } = req.body;
+    const user = await User.findOne({code: code});
+    if(!user) return res.status(400).json({error: 'Usuário não encontrado!'});
+
+    return res.json(user);
+  },
+
   async update(req, res){
     const { name, email, code, admin } = req.body;
     const { id } = req.headers;

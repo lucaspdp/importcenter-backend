@@ -135,6 +135,22 @@ export default {
     return res.status(500).json({error: "Sem autorização!"});
   },
 
+  async showAll(req, res){
+    const { id } = req.headers
+    const user = await User.findById(id);
+
+    if(user.admin){
+      let posts = [];
+
+      posts = await Post.find().sort({
+        createdAt: 'desc'
+      }).populate({path: 'destination', select: 'email code name credits'})
+  
+      return res.json(posts);
+    }
+    return res.status(500).json({error: "Sem autorização!"});
+  },
+
   async showOne(req, res){
     const { id } = req.headers;
     const user = await User.findById(id);

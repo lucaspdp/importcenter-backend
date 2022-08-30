@@ -12,13 +12,17 @@ const router = express.Router();
 ///ADMIN
 router.post('/register', User.store);
 router.get('/users', User.index);
+router.get('/usersall', User.indexAll);
 router.get('/user/:id', User.show);
+router.post('/usercode', User.showCode);
 router.get('/editpost/:postId', Post.showOne);
 router.delete('/user/:user_id', User.delete);
 router.put('/user/:user_id', User.update);
 router.put('/post/:postId', Post.update);
 router.get('/posts', Post.show);
+router.get('/postsall', Post.showAll)
 router.get('/creditshistory', AdminCredits.index);
+router.get('/creditsall', AdminCredits.indexAll);
 router.delete('/creditshistory/:date', AdminCredits.delete);
 //POST
 router.post('/post/new', Post.store);
